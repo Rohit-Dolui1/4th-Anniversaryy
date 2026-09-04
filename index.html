@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Our Love Story ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, serif;
+      background: #fff1f5;
+      color: #571d32;
+      overflow-x: hidden;
+    }
+
+    /* =========================
+       FLOATING HEARTS
+    ========================= */
+
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 100;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -40px;
+      animation: floatUp linear forwards;
+      opacity: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(.7) rotate(0);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: .8;
+      }
+
+      100% {
+        transform: translateY(-110vh) scale(1.2) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100svh;
+      padding: 25px 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      background:
+        linear-gradient(
+          rgba(214, 45, 91, .45),
+          rgba(255, 182, 193, .65)
+        ),
+        url("https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1000&q=80")
+        center/cover;
+    }
+
+    .hero-content {
+      width: 100%;
+      max-width: 430px;
+
+      padding: 40px 22px;
+
+      background: rgba(255,255,255,.92);
+
+      border-radius: 28px;
+
+      box-shadow:
+        0 15px 50px rgba(93,20,45,.3);
+
+      animation: showUp 1.2s ease;
+    }
+
+    @keyframes showUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 13vw, 4.5rem);
+      line-height: 1.05;
+      color: #d81b60;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .hero button {
+      width: 100%;
+      margin-top: 28px;
+
+      padding: 17px 20px;
+
+      border: none;
+      border-radius: 50px;
+
+      background: #e91e63;
+      color: white;
+
+      font-size: 1rem;
+      font-weight: bold;
+
+      box-shadow: 0 8px 20px rgba(233,30,99,.3);
+    }
+
+    .hero button:active {
+      transform: scale(.96);
+    }
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section {
+      padding: 65px 18px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2.3rem;
+      line-height: 1.2;
+      color: #c2185b;
+      margin-bottom: 15px;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 420px;
+      margin: 0 auto 35px;
+      color: #704052;
+    }
+
+    /* =========================
+       MEMORIES
+    ========================= */
+
+    .memories {
+      display: flex;
+
+      gap: 18px;
+
+      overflow-x: auto;
+
+      scroll-snap-type: x mandatory;
+
+      padding: 10px 5px 25px;
+
+      scrollbar-width: none;
+    }
+
+    .memories::-webkit-scrollbar {
+      display: none;
+    }
+
+    .memory {
+      flex: 0 0 82%;
+
+      scroll-snap-align: center;
+
+      background: white;
+
+      padding: 12px;
+
+      border-radius: 22px;
+
+      box-shadow:
+        0 10px 30px rgba(90,20,50,.13);
+    }
+
+    .memory img {
+      width: 100%;
+      height: 330px;
+
+      object-fit: cover;
+
+      border-radius: 16px;
+    }
+
+    .memory h3 {
+      margin: 17px 0 8px;
+
+      font-size: 1.3rem;
+
+      color: #d81b60;
+    }
+
+    .memory p {
+      font-size: .95rem;
+      line-height: 1.7;
+      padding-bottom: 8px;
+    }
+
+    .swipe-text {
+      font-size: .8rem;
+      color: #b05270;
+      margin-top: 5px;
+    }
+
+    /* =========================
+       LOVE LETTER
+    ========================= */
+
+    .letter-section {
+      background: linear-gradient(
+        135deg,
+        #ffe0e9,
+        #fff7f9
+      );
+    }
+
+    .letter {
+      width: 100%;
+      max-width: 430px;
+
+      margin: auto;
+
+      padding: 32px 24px;
+
+      background: #fffdf4;
+
+      border-radius: 10px;
+
+      border-left: 5px solid #e91e63;
+
+      box-shadow:
+        0 12px 35px rgba(100,30,50,.15);
+
+      text-align: left;
+
+      position: relative;
+    }
+
+    .letter::after {
+      content: "♥";
+
+      position: absolute;
+
+      right: 18px;
+      top: 12px;
+
+      font-size: 32px;
+
+      color: #ffabc2;
+    }
+
+    .letter p {
+      font-size: 1rem;
+      line-height: 1.9;
+
+      margin-bottom: 17px;
+    }
+
+    .signature {
+      text-align: right;
+
+      color: #d81b60;
+
+      font-style: italic;
+
+      font-size: 1.2rem !important;
+    }
+
+    /* =========================
+       TIMELINE
+    ========================= */
+
+    .timeline {
+      max-width: 430px;
+      margin: 40px auto 0;
+
+      text-align: left;
+
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+
+      position: absolute;
+
+      left: 17px;
+
+      top: 0;
+      bottom: 0;
+
+      width: 3px;
+
+      background: #f48fb1;
+    }
+
+    .event {
+      position: relative;
+
+      padding-left: 50px;
+
+      margin-bottom: 38px;
+    }
+
+    .event::before {
+      content: "❤";
+
+      position: absolute;
+
+      left: 0;
+      top: 0;
+
+      width: 35px;
+      height: 35px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background: #e91e63;
+
+      color: white;
+
+      font-size: 13px;
+    }
+
+    .event h3 {
+      color: #c2185b;
+      margin-bottom: 7px;
+      font-size: 1.2rem;
+    }
+
+    .event p {
+      font-size: .95rem;
+      line-height: 1.7;
+    }
+
+    /* =========================
+       FOREVER
+    ========================= */
+
+    .forever {
+      min-height: 70svh;
+
+      display: flex;
+      flex-direction: column;
+
+      justify-content: center;
+      align-items: center;
+
+      background: #d81b60;
+
+      color: white;
+    }
+
+    .forever h2 {
+      color: white;
+
+      font-size: clamp(
+        2.8rem,
+        12vw,
+        4.5rem
+      );
+
+      margin-bottom: 20px;
+    }
+
+    .counter {
+      font-size: 1rem;
+
+      max-width: 330px;
+
+      line-height: 1.7;
+    }
+
+    .forever button {
+      margin-top: 30px;
+
+      padding: 16px 28px;
+
+      border: 2px solid white;
+
+      border-radius: 50px;
+
+      background: transparent;
+
+      color: white;
+
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .forever button:active {
+      background: white;
+      color: #d81b60;
+
+      transform: scale(.95);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #880e4f;
+
+      color: white;
+
+      text-align: center;
+
+      padding: 22px 15px;
+
+      font-size: .85rem;
+    }
+
+    /* =========================
+       SMALL PHONES
+    ========================= */
+
+    @media (max-width: 360px) {
+
+      .hero-content {
+        padding: 32px 18px;
+      }
+
+      .hero h1 {
+        font-size: 2.6rem;
+      }
+
+      .memory {
+        flex-basis: 88%;
+      }
+
+      .memory img {
+        height: 280px;
+      }
+
+      section {
+        padding: 55px 15px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Floating Hearts -->
+  <div class="hearts" id="hearts"></div>
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <header class="hero">
+
+    <div class="hero-content">
+
+      <h1>
+        Our<br>
+        Love Story ❤️
+      </h1>
+
+      <p>
+        Some moments become memories.<br>
+        Some memories become treasures.<br>
+        And some people become your whole world.
+      </p>
+
+      <button onclick="startStory()">
+        Begin Our Story 💕
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       MEMORIES
+  ========================== -->
+
+  <section id="memories">
+
+    <h2>
+      Our Memories 💗
+    </h2>
+
+    <p class="subtitle">
+      Every picture holds a moment.
+      Every moment holds an emotion.
+      And every emotion reminds me of you.
+    </p>
+
+
+    <div class="memories">
+
+      <div class="memory">
+
+        <img
+          src="2nd.jpeg"
+          alt="Love memory"
+        >
+
+        <h3>
+          The First Moment 🌸
+        </h3>
+
+        <p>
+          The moment our story began —
+          a moment I'll never forget.
+        </p>
+
+      </div>
+
+
+      <div class="memory">
+
+        <img
+          src="1st.jpeg"
+          alt="Romantic memory"
+        >
+
+        <h3>
+          Adventures Together 🌹
+        </h3>
+
+        <p>
+          Wherever we go,
+          everything feels better with you.
+        </p>
+
+      </div>
+
+
+      <div class="memory">
+
+        <img
+          src="3rd.jpeg"
+          alt="Beautiful memory"
+        >
+
+        <h3>
+          Your Smile 😊
+        </h3>
+
+        <p>
+          Your smile is still one of
+          my favorite things in this world.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="swipe-text">
+      ← Swipe to see more memories →
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       LOVE LETTER
+  ========================== -->
+
+  <section class="letter-section">
+
+    <h2>
+      A Letter For You 💌
+    </h2>
+
+    <p class="subtitle">
+      A few words straight from my heart.
+    </p>
+
+
+    <div class="letter">
+
+      <p>
+        Amar Golu molu,
+      </p>
+
+      <p>
+        Aro akta bochor Tumi,Ami aksathe onek Hasi,Jhogra,Maramari,pelem👉👈 kore katea dilam🧿🫂...Amra erom korei aksathe maramari kore aksathe theke jabo..🫂❤️🧿
+      </p>
+
+      <p>
+        Tomake ami ekhane bole bojhate parbo na tumi koto Special amar kache🥰...Tumi amar kache khub e special akjon jar kache ami sob kotha bolte pari mon khule...jar kache ami sob theke besi comfortable feel kori...jar kache kono kichu bolar age amake vabte hoyna kichu...ar je amake khub valobase🫂🥰
+      </p>
+
+      <p>
+        Thank you for every smile,
+        every conversation, every little moment,
+        and every memory we've created together.
+      </p>
+
+      <p>
+        Sona I LOVE YOU🫂❤️😘<br>
+        Ami erom korei thakbo tomar kache...tomake erom korei rakhbo...akdom amar kuchu puchu er moto kore...🫂<br>
+        abar o akbar <b>I LOVE YOU SONA❤️🫂😘🧿</b>
+
+      </p>
+
+      <p>
+        Today, tomorrow,
+        and every day after that...
+        I'll choose you. ❤️
+      </p>
+
+      <p class="signature">
+        Forever yours,<br>
+        ❤️ Your Rohit
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       TIMELINE
+  ========================== -->
+
+  <section>
+
+    <h2>
+      Our Journey 💞
+    </h2>
+
+    <p class="subtitle">
+      Every chapter made our story
+      a little more beautiful.
+    </p>
+
+
+    <div class="timeline">
+
+      <div class="event">
+
+        <h3>
+          When We Met 🌸
+        </h3>
+
+        <p>
+          <b>Ajj theke 11 bochor age amader dekha hoy...jokhon amra class 5 e pori...tokhon ami tomake valo kore chintam o na...hotat tomake akdin dekhe khubb valo legechilo...kintu kichu bolar sujog hoyne..mane voy petam to khub..akhon o pai..kintu tokhon bolte parini tokhon choto chilam to tai</b>
+        </p>
+
+      </div>
+
+
+      <div class="event">
+
+        <h3>
+          Growing Together 🌹
+        </h3>
+
+        <p>
+          <b>Tarpor amra class 5 theke aksathe porasona korlam,aksathe boro holam,koto jhogra marpit korlam,...haa majhe aktu somossa hoyechilo...kintu seta esob er kache kichui na...okhanei ami tomake janlam valo kore..ar tukus kore valo bese fellam...kintu tokhon o bolte parlam na</b>
+        </p>
+
+      </div>
+
+      <div class="event">
+
+        <h3>
+          Our First Memory 💕
+        </h3>
+
+        <p>
+        <b>Class 5 er pore 8 bochor pore elo serom akta din..jekhane ami tomake amar valo basar kotha bolte parlam...kintu tumi tokhon amake haa boloni..kintu naa tao boloni...tarpor amra aro aksathe katalam koyek ta mas...ar seta ager theke onek close vabe...tapor elo sei sundor din ta...jekhane tumi sundor akts saree pore asechile....porir moto lagchilo akdom...<h4>Date:05/09/2022</h4> sedin e holo sei bepar ta ...jake ami khub pochondo kortam se sedin i amake bollo kan er kache ase..."I LOVE YOU ROHIT"...Amar kache oii din tai amar jibon er sob theke best Memory .</b>
+        </p>
+
+      </div>
+
+
+      <div class="event">
+
+        <h3>
+          Today ❤️
+        </h3>
+
+        <p>
+          <b>Still together.
+          Still smiling.
+          Still creating memories.</b>
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOREVER
+  ========================== -->
+
+  <section class="forever">
+
+    <h2>
+      Forever ❤️
+    </h2>
+
+    <p class="counter">
+      Our story is only getting started...
+    </p>>
+
+  </section>
+
+
+  <footer>
+    Made with ❤️ for someone very special.
+  </footer>
+
+
+  <script>
+
+    /* =========================
+       START STORY
+    ========================== */
+
+    function startStory() {
+
+      document
+        .getElementById("memories")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+
+    }
+
+
+    /* =========================
+       SURPRISE
+    ========================== */
+
+    function loveMessage() {
+
+      // Vibrate phone if supported
+      if (navigator.vibrate) {
+        navigator.vibrate([100, 50, 100]);
+      }
+
+      alert(
+        "❤️ You are my favorite person, my happiest memory, and my most beautiful future. ❤️"
+      );
+
+    }
+
+
+    /* =========================
+       FLOATING HEARTS
+    ========================== */
+
+    const heartsContainer =
+      document.getElementById("hearts");
+
+    const heartSymbols = [
+      "❤️",
+      "💕",
+      "💗",
+      "💖",
+      "💘",
+      "💝"
+    ];
+
+
+    function createHeart() {
+
+      const heart =
+        document.createElement("div");
+
+      heart.className = "heart";
+
+      heart.innerHTML =
+        heartSymbols[
+          Math.floor(
+            Math.random() *
+            heartSymbols.length
+          )
+        ];
+
+      heart.style.left =
+        Math.random() * 100 + "vw";
+
+      heart.style.fontSize =
+        Math.random() * 18 + 14 + "px";
+
+      heart.style.animationDuration =
+        Math.random() * 5 + 5 + "s";
+
+      heartsContainer.appendChild(heart);
+
+
+      setTimeout(() => {
+
+        heart.remove();
+
+      }, 10000);
+
+    }
+
+
+    setInterval(createHeart, 650);
+
+
+    /* =========================
+       TOUCH FEEDBACK
+    ========================== */
+
+    document
+      .querySelectorAll("button")
+      .forEach(button => {
+
+        button.addEventListener(
+          "touchstart",
+          () => {
+
+            button.style.transform =
+              "scale(.96)";
+
+          }
+        );
+
+        button.addEventListener(
+          "touchend",
+          () => {
+
+            button.style.transform =
+              "";
+
+          }
+        );
+
+      });
+
+  </script>
+
+</body>
+</html>
